@@ -56,10 +56,12 @@ buttonElement.addEventListener('click' , function(){
         cell.addEventListener('click' , () => {
 
             //al click aggiungo la classe ed effettuo un controllo
-            cell.classList.add('b-gblue');
-            console.log(i);
-
-            scoreElement.innerText = ++userPoint;
+            if(!(cell.classList.contains('b-gblue'))){
+                cell.classList.add('b-gblue');
+                console.log(i);
+                scoreElement.innerText = ++userPoint;
+            }
+                
         });
 
         //stampo gli elementi in pagina
