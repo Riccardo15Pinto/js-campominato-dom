@@ -16,9 +16,31 @@ function createcell(className , cellText){
     return cell;
 }
 
+//creo un funzione che generi tot numero di numeri(bombe)
+function createBombs(numberofbombs, maxNumber){
+    let bombs = [];
+    while(bombs.length < numberofbombs){
+        let randomNumbers;
+        do{
+            randomNumbers = Math.floor(Math.random() * maxNumber) + 1;
+        }while(bombs.includes(randomNumbers));
+        bombs.push(randomNumbers);
+    }
+    return bombs;
+}
+
+
 //metto in ascolto il bottone
 buttonElement.addEventListener('click' , function(){
+    // numero di bombe
+    const bombNumber = 16;
+    // creo una lista contenente le bombe
+    const bombs = [];
 
+
+
+
+    // contatore punteggio
     let userPoint = 0;
 
     //creo delle variabili d'appoggio
@@ -57,6 +79,7 @@ buttonElement.addEventListener('click' , function(){
 
             //al click aggiungo la classe ed effettuo un controllo
             if(!(cell.classList.contains('b-gblue'))){
+                
                 cell.classList.add('b-gblue');
                 console.log(i);
                 scoreElement.innerText = ++userPoint;
