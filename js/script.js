@@ -86,14 +86,14 @@ buttonElement.addEventListener('click' , function(){
                 scoreElement.innerText = ++userPoint;
                 const cellValue = parseInt(cell.innerText);
                 console.log(cellValue); 
-            }
-            
-            for(let i = 0; i < bombs.length; i++){
-                const bombsclick = bombs[i];
-                if(cellValue === bombsclick){
-                    cell.classList.add('b-gred');
+                for(let i = 0; i < bombs.length; i++){
+                    const bombsclick = bombs[i];
+                    if(cellValue === bombsclick){
+                        cell.classList.add('b-gred');
+                    }
                 }
             }
+            
             
             
             
