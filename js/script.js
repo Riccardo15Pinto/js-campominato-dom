@@ -29,12 +29,16 @@ function createBombs(numberofbombs, maxNumber){
     return bombs;
 }
 
+//creo una funzione che imposti il messaggio di vittoria/sconfitta
+function response(point , condition){
+    const messagge = condition ? `PIVELLO !!! Sei riuscito a totalizzare solo ${point} punti` : `ESTREMAMENTE FORTUNATO !!! Hai totalizzato ${point} punti`;
+    alert(messagge);
+}
+
+
 
 //metto in ascolto il bottone
 buttonElement.addEventListener('click' , function(){
-    
-    
-    
     
     // contatore punteggio
     let userPoint = 0;
@@ -63,15 +67,16 @@ buttonElement.addEventListener('click' , function(){
         gameSelect = 'hard';
         
     }
-
+    
     // numero di bombe
     const bombNumber = 16;
-
+    
     // creo una lista contenente le bombe
     const bombs = createBombs(bombNumber, total);
-    console.table(bombs);
+    console.log(bombs);
     
-    
+    // creo una variabile che segni il massimo dei punti ottenibile
+    const totalscore = total - bombNumber;
     
     //creo un ciclo
     for(let i = 1; i <= total;  i++){
@@ -82,23 +87,48 @@ buttonElement.addEventListener('click' , function(){
         //metto in ascolto le celle
         cell.addEventListener('click' , () => {
             
-            const cellValue = parseInt(cell.innerText);
-                    
-            for(let i = 0; i < bombs.length; i++){
-                const bombsclick = bombs[i];
-                if(cellValue === bombsclick){
-                    cell.classList.add('b-gred');
-                }else if (!(cellValue === bombsclick)){
+            //creo una funzione che riveli tutte le caselle
+            function revealcells(){
+                const cells = document.querySelectorAll('section > *');
+                for(let i = 0; i < cells.length; i++){
+                    const cell = cells[i];
                     cell.classList.add('b-gblue');
-                    ++userPoint;
-                    scoreElement.innerText = userPoint;
+                    if(bombs.includes(parseInt(cell.innerText))){
+                        cell.classList.add('b-gred');
+                    } 
+                }
+            }
+
+            // se clicchi non aggiungie il punteggio
+            if(cell.classList.contains('b-gblue')) return;
+            
+            //aggiungo la classe b-gblue
+            cell.classList.add('b-gblue');
+            
+            //effettuo un controllo se il numero è una bomba
+            const itsBomb = bombs.includes(parseInt(cell.innerText));
+            
+            //se è una bomba
+            if(itsBomb){
+                cell.classList.add('b-gred');
+                response(userPoint, itsBomb);
+                revealcells();
+                
+            }else{ //altrimenti
+                scoreElement.innerText = ++userPoint;
+                
+                if(userPoint === 1){
+                    response(userPoint, itsBomb);
+                    revealcells();
+
                 }
             }
             
         });
-                
+        
         //stampo gli elementi in pagina
         containerElement.appendChild(cell);
-
+        
     }
 });
+
