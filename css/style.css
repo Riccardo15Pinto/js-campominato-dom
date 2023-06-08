@@ -1,0 +1,89 @@
+/* reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Genereics */
+
+body{
+    font-family: sans-serif;
+}
+
+header{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    position: sticky;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+main{
+    background-color: rgb(168, 168, 168);
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header > *{
+    padding: 0 20px;
+}
+
+button{
+    padding: 15px 20px;
+    background-color: aqua;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+select{
+    font-size: 1.5rem;
+    padding-right: 40px;
+    margin-right: 20px;
+}
+
+.container{
+    
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.easy{
+    border: 1px solid rgb(1, 255, 22);
+    flex-basis: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.medium{
+    border: 1px solid rgb(238, 255, 0);
+    flex-basis: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.hard{
+    border: 1px solid red;
+    flex-basis: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.b-gblue{
+    background-color: blue;
+}
+
+.d-flex{
+    display: flex;
+}
