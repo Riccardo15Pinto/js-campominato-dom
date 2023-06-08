@@ -19,6 +19,8 @@ function createcell(className , cellText){
 //metto in ascolto il bottone
 buttonElement.addEventListener('click' , function(){
 
+    let userPoint = 0;
+
     //creo delle variabili d'appoggio
     const row = 10;
     const cols = 10;
@@ -56,6 +58,8 @@ buttonElement.addEventListener('click' , function(){
             //al click aggiungo la classe ed effettuo un controllo
             cell.classList.add('b-gblue');
             console.log(i);
+
+            scoreElement.innerText = ++userPoint;
         });
 
         //stampo gli elementi in pagina
