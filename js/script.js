@@ -63,29 +63,37 @@ buttonElement.addEventListener('click' , function(){
         gameSelect = 'hard';
         
     }
+
     // numero di bombe
     const bombNumber = 16;
+
     // creo una lista contenente le bombe
     const bombs = createBombs(bombNumber, total);
     console.log(bombs);
     
     //creo un ciclo
     for(let i = 1; i <= total;  i++){
-
+        
         //genero le celle 
         const cell = createcell(gameSelect , i);
-      
+        
         //metto in ascolto le celle
         cell.addEventListener('click' , () => {
-
+            
             //al click aggiungo la classe ed effettuo un controllo
             if(!(cell.classList.contains('b-gblue'))){
-                
+                const cellValue = parseInt(cell.innerText);
                 cell.classList.add('b-gblue');
-                console.log(i);
                 scoreElement.innerText = ++userPoint;
+                console.log(cellValue); 
             }
-                
+            
+            
+            
+            
+            
+            
+            
         });
 
         //stampo gli elementi in pagina
