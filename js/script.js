@@ -69,7 +69,7 @@ buttonElement.addEventListener('click' , function(){
 
     // creo una lista contenente le bombe
     const bombs = createBombs(bombNumber, total);
-    console.log(bombs);
+    console.table(bombs);
     
     //creo un ciclo
     for(let i = 1; i <= total;  i++){
@@ -82,13 +82,18 @@ buttonElement.addEventListener('click' , function(){
             
             //al click aggiungo la classe ed effettuo un controllo
             if(!(cell.classList.contains('b-gblue'))){
-                const cellValue = parseInt(cell.innerText);
                 cell.classList.add('b-gblue');
                 scoreElement.innerText = ++userPoint;
+                const cellValue = parseInt(cell.innerText);
                 console.log(cellValue); 
             }
             
-            
+            for(let i = 0; i < bombs.length; i++){
+                const bombsclick = bombs[i];
+                if(cellValue === bombsclick){
+                    cell.classList.add('b-gred');
+                }
+            }
             
             
             
