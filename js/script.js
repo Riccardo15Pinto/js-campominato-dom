@@ -71,6 +71,8 @@ buttonElement.addEventListener('click' , function(){
     const bombs = createBombs(bombNumber, total);
     console.table(bombs);
     
+    
+    
     //creo un ciclo
     for(let i = 1; i <= total;  i++){
         
@@ -80,27 +82,21 @@ buttonElement.addEventListener('click' , function(){
         //metto in ascolto le celle
         cell.addEventListener('click' , () => {
             
-            //al click aggiungo la classe ed effettuo un controllo
-            if(!(cell.classList.contains('b-gblue'))){
-                cell.classList.add('b-gblue');
-                scoreElement.innerText = ++userPoint;
-                const cellValue = parseInt(cell.innerText);
-                console.log(cellValue); 
-                for(let i = 0; i < bombs.length; i++){
-                    const bombsclick = bombs[i];
-                    if(cellValue === bombsclick){
-                        cell.classList.add('b-gred');
-                    }
+            const cellValue = parseInt(cell.innerText);
+                    
+            for(let i = 0; i < bombs.length; i++){
+                const bombsclick = bombs[i];
+                if(cellValue === bombsclick){
+                    cell.classList.add('b-gred');
+                }else if (!(cellValue === bombsclick)){
+                    cell.classList.add('b-gblue');
+                    ++userPoint;
+                    scoreElement.innerText = userPoint;
                 }
             }
             
-            
-            
-            
-            
-            
         });
-
+                
         //stampo gli elementi in pagina
         containerElement.appendChild(cell);
 
