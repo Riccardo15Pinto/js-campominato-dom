@@ -32,41 +32,42 @@ function createBombs(numberofbombs, maxNumber){
 
 //metto in ascolto il bottone
 buttonElement.addEventListener('click' , function(){
-    // numero di bombe
-    const bombNumber = 16;
-    // creo una lista contenente le bombe
-    const bombs = [];
-
-
-
-
+    
+    
+    
+    
     // contatore punteggio
     let userPoint = 0;
-
+    
     //creo delle variabili d'appoggio
     const row = 10;
     const cols = 10;
     let total = row * cols;
     let gameSelect = 'easy';
-
+    
     // al click svuoto il container
     containerElement.innerHTML = '';
-
+    
     //recupero valore select
     let userChoice = parseInt(selectElement.value);
-
+    
     //controllo il valore della select e modifico i parametri in base al valoro
     if(userChoice === 2){
-
+        
         total = (row * cols) - 19;
         gameSelect = 'medium';
-
+        
     } else if (userChoice === 3){
-
+        
         total = (row * cols) - 51;
         gameSelect = 'hard';
-
+        
     }
+    // numero di bombe
+    const bombNumber = 16;
+    // creo una lista contenente le bombe
+    const bombs = createBombs(bombNumber, total);
+    console.log(bombs);
     
     //creo un ciclo
     for(let i = 1; i <= total;  i++){
