@@ -117,9 +117,8 @@ buttonElement.addEventListener('click' , function(){
             }else{ //altrimenti
                 scoreElement.innerText = ++userPoint;
                 
-                if(userPoint === 1){
+                if(userPoint === totalscore){
                     response(userPoint, itsBomb);
-                    revealcells();
 
                 }
             }
